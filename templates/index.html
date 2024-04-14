@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>NeuroKnight</title>
+  </head>
+  <body>
+    <div class="flex flex-col justify-center items-center min-h-screen">
+      <form
+        action="/"
+        method="post"
+        enctype="multipart/form-data"
+        class="flex flex-col bg-[#40676c] gap-y-2 p-10 rounded-md"
+      >
+        <h1 class="text-center text-3xl text-white">NeuroKnight</h1>
+        <label for="patientName" class="text-white"
+          >Patient's name <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          name="patientName"
+          id="patientName"
+          class="p-2 rounded-md"
+          required
+        />
+
+        <label for="imagefile" class="text-white"
+          >Upload Image <span class="text-red-500">*</span></label
+        >
+        <input
+          type="file"
+          name="imagefile"
+          id="imagefile"
+          required
+          class="p-2 bg-[#1d232a] text-white rounded-md"
+        />
+
+        <input
+          type="submit"
+          value="Submit"
+          class="bg-[#08d48c] p-2 rounded-md text-white uppercase cursor-pointer"
+        />
+      </form>
+
+      {% if save_path and patientName %}
+      <div class="mt-8">
+        <p class="text-center text-2xl">Patient Name: {{patientName}}</p>
+        <img src="{{save_path}}" alt="results" />
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
